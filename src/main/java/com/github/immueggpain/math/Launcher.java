@@ -11,6 +11,16 @@ public class Launcher {
 	}
 
 	private void run() {
+		int n = 1000000000;
+		double p = 0;
+		int i = 3;
+		for (; i < n; i++) {
+			p += Math.log(i) / Math.log(2);
+		}
+		System.out.println(i + ": " + p);
+	}
+
+	public void _3x_1() {
 		long x = 98134983439834L;
 		while (true) {
 			if ((x & 1) == 0) {
