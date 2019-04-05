@@ -7,14 +7,36 @@ public class Launcher {
 
 	public static void main(String[] args) {
 		try {
-			new Launcher().run();
+			new Launcher().run(args);
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void run() {
-		testPrime2();
+	private void run(String[] args) {
+		generatePrimes(args[0]);
+	}
+
+	public void generatePrimes(String numseq) {
+		BigInteger p = new BigInteger("161681270417881214990139853917025970773295546934370654829940263176596422"
+				+ "005366156369283251871791149134748217434506187558476859775142098850915781604567221063440"
+				+ "3494396774302351358554762925013352581778715961011011272327724839184954836001137"
+				+ "585040156584863617817608912759671917466195" + numseq + "65198677389");
+		for (int i = 0;; i++) {
+			System.out.println(i);
+			p = p.nextProbablePrime();
+			if (p.toString().contains(numseq)) {
+				break;
+			}
+		}
+
+		BigInteger q = BigInteger.probablePrime(1014, new SecureRandom());
+		System.out.println(p);
+		System.out.println(q);
+		System.out.println(p.multiply(q));
+		int indexOf = p.toString().indexOf(numseq);
+		System.out.println(String.format("%dth digit to %dth digit", indexOf + 1, indexOf + numseq.length()));
+
 	}
 
 	public void testPrime() {
